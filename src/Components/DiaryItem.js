@@ -13,7 +13,7 @@ const DiaryItem = ({
   const [isEdit, setIsEdit] = useState(false);
   const toggleIsEdit = () => setIsEdit(!isEdit);
   const handleClickRemove = () => {
-    if (window.confirm(`${id}번째 일기를 정말 삭제하시겠습니까?`)) {
+    if (window.confirm(`"${title}"를 정말 삭제하시겠습니까?`)) {
       onDelete(id);
     }
   };
@@ -25,7 +25,7 @@ const DiaryItem = ({
       return;
     }
 
-    if (window.confirm(`${id}번 째 일기를 수정하시겠습니까?`)) {
+    if (window.confirm(`"${title}"를 수정하시겠습니까?`)) {
       onEdit(id, localContent);
       toggleIsEdit();
     }
