@@ -2,10 +2,17 @@ import React, { useState, useRef } from "react";
 import "./css/DiaryEditor.css";
 
 const DiaryEditor = ({ onCreate }) => {
+  const emotions = [
+    { id: "1", value: "😆최고", label: "😆최고" },
+    { id: "2", value: "😊좋아", label: "😊좋아" },
+    { id: "3", value: "😐그냥그래", label: "😐그냥그래" },
+    { id: "4", value: "🙁나빠", label: "🙁나빠" },
+    { id: "5", value: "😡매우 나빠", label: "😡매우 나빠" },
+  ];
   const [state, setState] = useState({
     title: "",
     content: "",
-    emotion: "😆",
+    emotion: "😆최고",
   });
   const titleInput = useRef();
   const contentInput = useRef();
@@ -29,7 +36,7 @@ const DiaryEditor = ({ onCreate }) => {
     setState({
       title: "",
       content: "",
-      emotion: "😆",
+      emotion: "😆최고",
     });
   };
   return (
@@ -38,17 +45,21 @@ const DiaryEditor = ({ onCreate }) => {
       <div className="user_text">
         <div className="date">Date : {new Date().toLocaleDateString()}</div>
         <div className="emotion">
-          <select
-            name="emotion"
-            value={state.emotion}
-            onChange={handleChangeState}
-          >
-            <option value={"😆"}>최고임!!!</option>
-            <option value={"😊"}>좋아</option>
-            <option value={"😐"}>그냥 그래</option>
-            <option value={"😣"}>별로..</option>
-            <option value={"😡"}>화딱지남</option>
-          </select>
+          {emotions.map((emotion) => (
+            <div>
+              <input
+                id={emotion.id}
+                type="radio"
+                name="emotion"
+                value={emotion.value}
+                checked={state.emotion === emotion.value}
+                onChange={handleChangeState}
+              />
+              <label for={emotion.id} key={emotion.id}>
+                {emotion.label}
+              </label>
+            </div>
+          ))}
         </div>
         <div className="title">
           <input

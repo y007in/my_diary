@@ -17,29 +17,49 @@ const DiaryItem = ({
       onDelete(id);
     }
   };
+  const [localTitle, setLocalTitle] = useState(title);
+  const localTitleInput = useRef();
   const [localContent, setLocalContent] = useState(content);
   const localContentInput = useRef();
+
   const handleEdit = () => {
-    if (localContent.length < 5) {
+    if (localTitle.length < 1) {
+      localTitleInput.current.focus();
+      return;
+    }
+
+    if (localContent.length < 1) {
       localContentInput.current.focus();
       return;
     }
 
     if (window.confirm(`"${title}"를 수정하시겠습니까?`)) {
-      onEdit(id, localContent);
+      onEdit(id, localTitle, localContent);
       toggleIsEdit();
     }
   };
   const handleQuitEdit = () => {
     setIsEdit(false);
+    setLocalTitle(title);
     setLocalContent(content);
   };
 
   return (
     <div className="DiaryItem">
-      <div className="title">
-        <h1>{title}</h1>
-      </div>
+      {isEdit ? (
+        <div className="title">
+          <input
+            ref={localTitleInput}
+            value={localTitle}
+            onChange={(e) => setLocalTitle(e.target.value)}
+          />
+        </div>
+      ) : (
+        <div className="title">
+          <h1>{title}</h1>
+        </div>
+      )}
+
       <div className="date_emotion">
         <div className="date">
           {new Date(created_date).toLocaleDateString()}
@@ -47,17 +67,16 @@ const DiaryItem = ({
         <div className="emotion">{emotion}</div>
       </div>
 
-      <div className="content">
-        {isEdit ? (
-          <textarea
-            ref={localContentInput}
-            value={localContent}
-            onChange={(e) => setLocalContent(e.target.value)}
-          />
-        ) : (
-          content
-        )}
-      </div>
+      {isEdit ? (
+        <textarea
+          ref={localContentInput}
+          value={localContent}
+          onChange={(e) => setLocalContent(e.target.value)}
+        />
+      ) : (
+        <div className="content">{content}</div>
+      )}
+
       <div className="buttons">
         {isEdit ? (
           <>

@@ -1,12 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .App {
   width: 100vw;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-sizing: border-box;
+  background-color: #eee;
+  padding: 40px;
+}
+.App h1 {
+  margin-bottom: 20px;
 }
 .Diary_container {
-  padding: 50px;
+  width: 1200px;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
   border-radius: 10px;
+  overflow: hidden;
+  gap: 10px;
+  background-color: #fff;
+}
+
+@media all and (max-width: 767px) {
+  .App {
+    padding: 20px;
+  }
+  .App h1 {
+    font-size: 28px;
+  }
+  .Diary_container {
+    width: 98vw;
+    flex-direction: column;
+  }
 }
