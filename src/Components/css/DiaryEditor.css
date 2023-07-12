@@ -1,0 +1,49 @@
+.DiaryEditor {
+  border: 1px solid #999;
+  border-radius: 5px;
+  padding: 10px 40px;
+  background-color: rgba(176, 196, 222, 0.3);
+}
+.DiaryEditor .user_text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.DiaryEditor .date {
+  font-weight: bold;
+}
+.DiaryEditor .title input {
+  border: 1px solid #333;
+  border-radius: 3px;
+  padding: 5px 10px;
+  margin-top: 10px;
+  outline: none;
+}
+.DiaryEditor .emotion {
+  width: 50%;
+}
+.DiaryEditor .content {
+  width: 500px;
+}
+.DiaryEditor textarea {
+  width: 498px;
+  height: 200px;
+  border-radius: 5px;
+  padding: 15px;
+  box-sizing: border-box;
+  outline: none;
+}
+.DiaryEditor .buttons {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  gap: 10px;
+}
+.DiaryEditor button {
+  border: none;
+  background-color: #6495ed;
+  color: #fff;
+  padding: 5px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}

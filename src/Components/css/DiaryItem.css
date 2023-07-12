@@ -1,0 +1,49 @@
+.DiaryItem {
+  border: 1px solid #999;
+  border-radius: 5px;
+  padding: 20px 30px;
+  margin-top: 20px;
+}
+.DiaryItem .title h1 {
+  font-size: 24px;
+}
+.DiaryItem .date_emotion {
+  display: flex;
+}
+.DiaryItem .date {
+  font-weight: bold;
+}
+
+.DiaryItem .emotion {
+  margin-left: 5px;
+}
+.DiaryItem .content {
+  margin: 20px 0;
+}
+.DiaryItem textarea {
+  width: 100%;
+  height: 200px;
+  border-radius: 5px;
+  padding: 15px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.DiaryItem .buttons {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+.DiaryItem .buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+.DiaryItem button {
+  border: none;
+  background-color: #6495ed;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
