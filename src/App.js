@@ -41,7 +41,7 @@ function App() {
     if (storeData) {
       setData(JSON.parse(storeData));
     }
-  });
+  }, []);
   return (
     <div className="App">
       <h1>📖MY DIARY📖</h1>
