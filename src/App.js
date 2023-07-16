@@ -1,10 +1,11 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import DiaryEditor from "./Components/DiaryEditor";
 import DiaryList from "./Components/DiaryList";
 
 function App() {
   const [data, setData] = useState([]);
+  // const [isDataLoaded, setIsDataLoaded] = useState(false);
   const dataID = useRef(0);
 
   const onCreate = (title, content, emotion) => {
@@ -17,22 +18,30 @@ function App() {
       created_date,
     };
     dataID.current += 1;
-    setData([newItem, ...data]);
+    const newState = [newItem, ...data];
+    setData(newState);
+    localStorage.setItem("diary", JSON.stringify(newState));
   };
   const onDelete = (targetId) => {
     const newDiaryList = data.filter((item) => item.id !== targetId);
     setData(newDiaryList);
+    localStorage.setItem(`diary`, JSON.stringify(newDiaryList));
   };
   const onEdit = (targetId, newTitle, newContent) => {
-    //newContent : 새롭게 수정되어질 내용
-    setData(
-      data.map((item) =>
-        item.id === targetId
-          ? { ...item, title: newTitle, content: newContent }
-          : item
-      )
+    const newState = data.map((item) =>
+      item.id === targetId
+        ? { ...item, title: newTitle, content: newContent }
+        : item
     );
+    setData(newState);
+    localStorage.setItem("diary", JSON.stringify(newState));
   };
+  useEffect(() => {
+    const storeData = localStorage.getItem("diary");
+    if (storeData) {
+      setData(JSON.parse(storeData));
+    }
+  });
   return (
     <div className="App">
       <h1>📖MY DIARY📖</h1>
