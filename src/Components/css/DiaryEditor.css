@@ -1,37 +1,51 @@
 .DiaryEditor {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 500px;
+  height: 100%;
   border-radius: 5px;
-  padding: 30px 40px;
+  padding: 25px;
   background-color: rgba(176, 196, 222, 0.4);
 }
 .DiaryEditor h1 {
   margin-bottom: 10px;
+  font-size: 36px;
 }
 .DiaryEditor .user_text {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 13px;
 }
 .DiaryEditor .date {
   font-weight: 500;
-  font-size: 18px;
+  font-size: 24px;
 }
+.DiaryEditor .date input {
+  padding-left: 5px;
+  margin: 0 5px;
+  border: none;
+  border-bottom: 1px solid #333;
+  outline: none;
+  background-color: transparent;
+  font-size: 24px;
+}
+
 .DiaryEditor .title input {
   width: 100%;
   padding: 5px 10px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   outline: none;
+  font-size: 24px;
 }
 .DiaryEditor .emotion {
   width: 100%;
   display: flex;
-  font-size: 20px;
+  font-size: 24px;
 }
 .DiaryEditor .emotion label {
-  margin-right: 5px;
-  font-size: 16px;
+  margin-right: 7px;
+  font-size: 24px;
 }
 
 .DiaryEditor .emotion input[type="radio"]:checked + label {
@@ -49,17 +63,18 @@
 }
 .DiaryEditor textarea {
   width: 100%;
-  height: 200px;
+  height: 50vh;
   border-radius: 3px;
   padding: 8px;
   box-sizing: border-box;
   outline: none;
   margin-top: 5px;
+  font-size: 24px;
 }
 .DiaryEditor .buttons {
   display: flex;
   justify-content: center;
-  padding: 10px 0;
+  margin-top: 20px;
   gap: 10px;
 }
 .DiaryEditor button {
@@ -69,9 +84,28 @@
   padding: 5px 20px;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 20px;
 }
 @media all and (max-width: 767px) {
   .DiaryEditor .emotion label {
-    font-size: 14px;
+    font-size: 16px;
+  }
+
+  .DiaryEditor .date {
+    font-size: 18px;
+  }
+  .DiaryEditor .date input {
+    font-size: 18px;
+  }
+  .DiaryEditor .title input {
+    padding: 10px 15px;
+    font-size: 18px;
+  }
+  .DiaryEditor textarea {
+    padding: 15px;
+    font-size: 18px;
+  }
+  .DiaryEditor button {
+    font-size: 18px;
   }
 }

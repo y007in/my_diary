@@ -1,14 +1,10 @@
 import React, { useState, useRef } from "react";
 import "./css/DiaryEditor.css";
+import { emotions } from "../utill";
 
 const DiaryEditor = ({ onCreate }) => {
-  const emotions = [
-    { id: "1", value: "😆최고", label: "😆최고" },
-    { id: "2", value: "😊좋아", label: "😊좋아" },
-    { id: "3", value: "😐그냥그래", label: "😐그냥그래" },
-    { id: "4", value: "🙁나빠", label: "🙁나빠" },
-    { id: "5", value: "😡매우 나빠", label: "😡매우 나빠" },
-  ];
+  const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
+
   const [state, setState] = useState({
     title: "",
     content: "",
@@ -31,19 +27,29 @@ const DiaryEditor = ({ onCreate }) => {
       contentInput.current.focus();
       return;
     }
-    onCreate(state.title, state.content, state.emotion);
+    onCreate(state.title, state.date, state.content, state.emotion);
     alert("저장 성공");
     setState({
       title: "",
+      date: "",
       content: "",
       emotion: "😆최고",
     });
+    console.log(date);
   };
   return (
     <div className="DiaryEditor">
-      <h1>Today🎧</h1>
+      <h1>Today 🎧</h1>
       <div className="user_text">
-        <div className="date">Date : {new Date().toLocaleDateString()}</div>
+        <div className="date">
+          Date :
+          <input
+            className="input_date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            type="date"
+          />
+        </div>
         <div className="emotion">
           {emotions.map((emotion) => (
             <div>

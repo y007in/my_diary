@@ -62,7 +62,7 @@ const DiaryItem = ({
 
       <div className="date_emotion">
         <div className="date">
-          {new Date(created_date).toLocaleDateString()}
+          {new Date(parseInt(created_date)).toLocaleDateString()}
         </div>
         <div className="emotion">{emotion}</div>
       </div>
