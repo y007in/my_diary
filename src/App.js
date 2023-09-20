@@ -14,13 +14,12 @@ function App() {
   const dataID = useRef(0);
 
   const onCreate = (title, date, content, emotion) => {
-    const created_date = new Date().getTime();
     const newItem = {
       id: dataID.current,
       title,
       content,
       emotion,
-      created_date,
+      date,
     };
 
     dataID.current += 1;
@@ -33,14 +32,15 @@ function App() {
     setData(newDiaryList);
     localStorage.setItem(`diary`, JSON.stringify(newDiaryList));
   };
-  const onEdit = (targetId, created_date, newTitle, newContent) => {
+  const onEdit = (targetId, newDate, newTitle, newContent, newEmotion) => {
     const newState = data.map((item) =>
       item.id === targetId
         ? {
             ...item,
             title: newTitle,
-            created_date,
+            date: newDate,
             content: newContent,
+            emotion: newEmotion,
           }
         : item
     );
@@ -58,7 +58,6 @@ function App() {
     <div className="App">
       {/* <h1>📖MY DIARY📖</h1> */}
       <div className="Diary_container">
-        {" "}
         <div className="left">
           <DiaryEditor onCreate={onCreate} />
           {list ? (

@@ -3,11 +3,10 @@ import "./css/DiaryEditor.css";
 import { emotions } from "../utill";
 
 const DiaryEditor = ({ onCreate }) => {
-  const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
-
   const [state, setState] = useState({
     title: "",
     content: "",
+    date: new Date().toISOString().slice(0, 10),
     emotion: "😆최고",
   });
   const titleInput = useRef();
@@ -31,11 +30,10 @@ const DiaryEditor = ({ onCreate }) => {
     alert("저장 성공");
     setState({
       title: "",
-      date: "",
+      date: new Date().toISOString().slice(0, 10),
       content: "",
       emotion: "😆최고",
     });
-    console.log(date);
   };
   return (
     <div className="DiaryEditor">
@@ -45,8 +43,9 @@ const DiaryEditor = ({ onCreate }) => {
           Date :
           <input
             className="input_date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
+            name="date"
+            value={state.date}
+            onChange={handleChangeState}
             type="date"
           />
         </div>

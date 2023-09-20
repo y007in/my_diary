@@ -28,6 +28,27 @@
 }
 
 .DiaryItem .emotion {
+  width: 100%;
+  display: flex;
+  font-size: 24px;
+}
+.DiaryItem .emotion label {
+  margin-right: 7px;
+  font-size: 24px;
+}
+
+.DiaryItem .emotion input[type="radio"]:checked + label {
+  background-color: #6495ed;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.DiaryItem .emotion input {
+  display: none;
+}
+
+.DiaryItem .emotion {
   margin-left: 5px;
 }
 .DiaryItem .content {
